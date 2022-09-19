@@ -10,11 +10,15 @@ import SwiftUI
 
 public struct CodePreviewView: View {
     
-    public var code: String
+    var code: String
     
     @State private var copyButtonHovered = false
     @State private var copyTextOpacity = 0.0
     @AppStorage("codeFontSize") private var codeFontSize = 15.0
+    
+    public init(code: String) {
+        self.code = code
+    }
     
     public var body: some View {
         ZStack(alignment: .bottom){

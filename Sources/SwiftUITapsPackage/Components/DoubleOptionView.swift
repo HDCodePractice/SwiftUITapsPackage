@@ -3,6 +3,10 @@ import SwiftUI
 public struct DoubleOptionView: View {
     @Binding var option : DoubleOption
     
+    public init(option: Binding<DoubleOption>) {
+        self._option = option
+    }
+    
     public var body: some View {
         VStack{
             HStack(spacing:20){

@@ -1,6 +1,6 @@
 //
 //  optionOptionView.swift
-//  
+//
 //
 //  Created by 老房东 on 2022-09-14.
 //
@@ -8,13 +8,18 @@
 import SwiftUI
 
 public struct OptionOptionView: View {
-    @Binding var option : OptionOption
+    @Binding var option: OptionOption
+
+    public init(option: Binding<OptionOption>) {
+        self._option = option
+    }
+
     public var body: some View {
-        VStack{
-            HStack(spacing:20){
+        VStack {
+            HStack(spacing: 20) {
                 Text("\(option.name):")
                     .bold()
-                Toggle(isOn: $option.active){
+                Toggle(isOn: $option.active) {
                     Text("")
                 }
             }

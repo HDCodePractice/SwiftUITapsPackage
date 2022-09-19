@@ -1,12 +1,19 @@
 import SwiftUI
 
 public struct HeadlineView: View {
-    public var title: String
-    public var url: String
-    public var description: String
+    var title: String
+    var url: String
+    var description: String
+
+    public init(title: String, url: String, description: String) {
+        self.title = title
+        self.url = url
+        self.description = description
+    }
+
     public var body: some View {
-        VStack(alignment: .leading, spacing: 20){
-            HStack{
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
                 Text(title)
                     .font(.largeTitle)
                 LinkView(url: url)
