@@ -68,15 +68,15 @@ VStack (alignment:. leading, spacing:20){
                     . truncationMode (.middle)
                 Text (longText)
                     .minimumScaleFactor(0.3)
-                if #available(iOS 16.0, *) {
-                    ViewThatFits{
-                        Text (longText)
-                        Text ("A view that display read-only text view")
-                        Text ("A view that display text")
-                        Text ("Text view")
-                            .minimumScaleFactor(0.3)
-                    }
-                }
+//                if #available(iOS 16.0, *) {
+//                    ViewThatFits{
+//                        Text (longText)
+//                        Text ("A view that display read-only text view")
+//                        Text ("A view that display text")
+//                        Text ("Text view")
+//                            .minimumScaleFactor(0.3)
+//                    }
+//                }
             }
             .lineLimit(1)
             .frame (width: width)
