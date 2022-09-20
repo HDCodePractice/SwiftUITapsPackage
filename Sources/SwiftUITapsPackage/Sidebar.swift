@@ -46,6 +46,12 @@ public struct Sidebar: View {
                 }
             }
             
+//            Section("Collection containers"){
+//                NavigationLink("ForEach"){
+//                    
+//                }
+//            }
+            
             Section("Animations"){
                 NavigationLink("withAnimation"){
                     WithAnimationControlView()
