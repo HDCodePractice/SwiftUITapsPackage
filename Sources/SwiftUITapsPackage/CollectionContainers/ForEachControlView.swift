@@ -55,6 +55,11 @@ private struct ForEachIdentifiableView: View {
                     Text(user.name)
                 }
             }
+            HStack {
+                ForEach(users,id: \\.name) { user in
+                    Text(user.name)
+                }
+            }
         }
     }
     """
@@ -75,7 +80,7 @@ private struct ForEachIdentifiableView: View {
                 .font(.title2)
             CodePreviewView(code: code)
             Text("Data Not Conforming to Identifiable")
-            VStack{
+            VStack {
                 HStack {
                     ForEach(colors, id: \.self) { color in
                         Text(color.description.capitalized)
@@ -87,6 +92,11 @@ private struct ForEachIdentifiableView: View {
                 Text("Data Conforming to Identifiable")
                 HStack {
                     ForEach(users) { user in
+                        Text(user.name)
+                    }
+                }
+                HStack {
+                    ForEach(users, id: \.name) { user in
                         Text(user.name)
                     }
                 }
