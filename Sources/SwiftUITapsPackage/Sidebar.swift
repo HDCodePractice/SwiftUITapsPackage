@@ -46,11 +46,11 @@ public struct Sidebar: View {
                 }
             }
             
-//            Section("Collection containers"){
-//                NavigationLink("ForEach"){
-//                    
-//                }
-//            }
+            Section("Collection containers"){
+                NavigationLink("ForEach"){
+                    ForEachControlView()
+                }
+            }
             
             Section("Animations"){
                 NavigationLink("withAnimation"){
