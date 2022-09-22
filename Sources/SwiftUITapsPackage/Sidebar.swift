@@ -34,6 +34,12 @@ public struct Sidebar: View {
                 }
             }
             
+            Section("Shapes"){
+                NavigationLink("Rectangular Shapes"){
+                    RectangularShapesControlView()
+                }
+            }
+            
             Section("Layout containers"){
                 NavigationLink("VStack"){
                     VStackControlView()

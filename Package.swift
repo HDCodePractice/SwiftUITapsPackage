@@ -5,8 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftUITapsPackage",
+    defaultLocalization: "en",
     platforms: [
-        .iOS(.v15), .macOS(.v12)
+        .iOS(.v15),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -27,5 +28,4 @@ let package = Package(
         .testTarget(
             name: "SwiftUITapsPackageTests",
             dependencies: ["SwiftUITapsPackage"]),
-    ]
-)
+    ])
