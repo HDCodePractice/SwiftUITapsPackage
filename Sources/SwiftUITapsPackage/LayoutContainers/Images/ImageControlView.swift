@@ -87,12 +87,14 @@ private struct CreateImageView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 100)
+        #if !os(macOS)
         if let cgImage = UIImage(named: "OneTapSwiftUI")?.cgImage {
             Image(decorative: cgImage, scale: 1.0, orientation: .up)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100)
         }
+        #endif
     }
 }
 
