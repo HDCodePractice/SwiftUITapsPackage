@@ -1,14 +1,14 @@
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct MapControlView: View {
     var body: some View {
-        ScrollView{
-            VStack{
+        ScrollView {
+            VStack {
                 HeadlineView(
-                    title: "Map", 
-                    url: "https://developer.apple.com/documentation/mapkit/map", 
-                    description: "A view that displays an embedded map interface."
+                    title: "Map",
+                    url: "https://developer.apple.com/documentation/mapkit/map",
+                    description: String(localized: "A view that displays an embedded map interface.")
                 )
                 SimpleMapView()
                 Divider()
@@ -20,9 +20,8 @@ struct MapControlView: View {
     }
 }
 
-struct MapInteractionModesView: View {
-    
-    enum MapInteractionModesType: String,CaseIterable,Identifiable{
+private struct MapInteractionModesView: View {
+    enum MapInteractionModesType: String, CaseIterable, Identifiable {
         case all = ".all"
         case pan = ".pan"
         case zoom = ".zoom"
@@ -30,7 +29,7 @@ struct MapInteractionModesView: View {
         
         var id: Self { self }
         var caseValue: MapInteractionModes {
-            switch self{
+            switch self {
             case .all:
                 return .all
             case .pan:
@@ -43,48 +42,50 @@ struct MapInteractionModesView: View {
         }
     }
     
-    @State var interactionModes : MapInteractionModesType = .all
+    @State var interactionModes: MapInteractionModesType = .all
     
-    var code : String{
+    var code: String {
         return """
-@State var coordinateRegion = MKCoordinateRegion(
-    center: CLLocationCoordinate2D(
-        latitude: 37.330828, 
-        longitude: -122.007495), 
-    span: MKCoordinateSpan(
-        latitudeDelta: 0.02, 
-        longitudeDelta: 0.02)
-)
-var body: some View {
-    Map(
-        coordinateRegion: $coordinateRegion,
-        interactionModes: \(interactionModes.rawValue)
-    )
-    .frame(height: 300)
-    HStack{
-        Text("interactionModes:")
-            .bold()
-        Picker("", selection: $interactionModes, content: { 
-            ForEach(MapInteractionModesType.allCases){ type in
-                Text(type.rawValue)
+        @State var coordinateRegion = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: 37.330828,
+                longitude: -122.007495),
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02)
+        )
+        var body: some View {
+            Map(
+                coordinateRegion: $coordinateRegion,
+                interactionModes: \(interactionModes.rawValue)
+            )
+            .frame(height: 300)
+            HStack{
+                Text("interactionModes:")
+                    .bold()
+                Picker("", selection: $interactionModes, content: {
+                    ForEach(MapInteractionModesType.allCases){ type in
+                        Text(type.rawValue)
+                    }
+                })
+                .pickerStyle(.segmented)
             }
-        })
-        .pickerStyle(.segmented)
-    }
-}
-"""
+        }
+        """
     }
     
     @State var coordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
-            latitude: 37.330828, 
-            longitude: -122.007495), 
+            latitude: 37.330828,
+            longitude: -122.007495
+        ),
         span: MKCoordinateSpan(
-            latitudeDelta: 0.02, 
-            longitudeDelta: 0.02)
+            latitudeDelta: 0.02,
+            longitudeDelta: 0.02
+        )
     )
     var body: some View {
-        VStack{
+        VStack {
             Text("Map interactionModes")
                 .font(.title2)
             CodePreviewView(code: code)
@@ -93,11 +94,11 @@ var body: some View {
                 interactionModes: interactionModes.caseValue
             )
             .frame(height: 300)
-            HStack{
+            HStack {
                 Text("interactionModes:")
                     .bold()
-                Picker("", selection: $interactionModes, content: { 
-                    ForEach(MapInteractionModesType.allCases){ type in
+                Picker("", selection: $interactionModes, content: {
+                    ForEach(MapInteractionModesType.allCases) { type in
                         Text(type.rawValue)
                     }
                 })
@@ -108,27 +109,27 @@ var body: some View {
 }
 
 private struct SimpleMapView: View {
-    var code : String {
+    var code: String {
         return """
-private struct SimpleMapView: View {
-    @State var coordinateRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: \(centerLatitude.valueString), 
-            longitude: \(centerLongitude.valueString), 
-        span: MKCoordinateSpan(
-            latitudeDelta: \(spanLatitudeDelta.valueString), 
-            longitudeDelta: \(spanLongitudeDelta.valueString))
-    )
-    
-    var body: some View {
-        Map(
-            coordinateRegion: $coordinateRegion ,
-            showsUserLocation: \(showsUserLocation.valueString)
-        )
-        .frame(height: 300)
-    }
-}
-"""
+        private struct SimpleMapView: View {
+            @State var coordinateRegion = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(
+                    latitude: \(centerLatitude.valueString),
+                    longitude: \(centerLongitude.valueString),
+                span: MKCoordinateSpan(
+                    latitudeDelta: \(spanLatitudeDelta.valueString),
+                    longitudeDelta: \(spanLongitudeDelta.valueString))
+            )
+
+            var body: some View {
+                Map(
+                    coordinateRegion: $coordinateRegion ,
+                    showsUserLocation: \(showsUserLocation.valueString)
+                )
+                .frame(height: 300)
+            }
+        }
+        """
     }
     
     @State var centerLatitude = DoubleOption(name: "latitude", value: 37.330828, range: -90...90)
@@ -139,19 +140,21 @@ private struct SimpleMapView: View {
     
     @State var coordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
-            latitude: 37.330828, 
-            longitude: -122.007495), 
+            latitude: 37.330828,
+            longitude: -122.007495
+        ),
         span: MKCoordinateSpan(
-            latitudeDelta: 0.02, 
-            longitudeDelta: 0.02)
+            latitudeDelta: 0.02,
+            longitudeDelta: 0.02
+        )
     )
     
     var body: some View {
-        Text("Simple Map View")
+        Text("Create a Map")
             .font(.title2)
         CodePreviewView(code: code)
         Map(
-            coordinateRegion: $coordinateRegion ,
+            coordinateRegion: $coordinateRegion,
             showsUserLocation: showsUserLocation.value
         )
         .onChange(of: coordinateRegion.center.latitude, perform: { newValue in
@@ -170,19 +173,19 @@ private struct SimpleMapView: View {
         
         DoubleOptionView(option: $centerLatitude)
             .onChange(of: centerLatitude.value) { newValue in
-                coordinateRegion.center.latitude=newValue
+                coordinateRegion.center.latitude = newValue
             }
         DoubleOptionView(option: $centerLongitude)
             .onChange(of: centerLongitude.value) { newValue in
-                coordinateRegion.center.longitude=newValue
+                coordinateRegion.center.longitude = newValue
             }
         DoubleOptionView(option: $spanLatitudeDelta)
             .onChange(of: spanLatitudeDelta.value) { newValue in
-                coordinateRegion.span.latitudeDelta=newValue
+                coordinateRegion.span.latitudeDelta = newValue
             }
         DoubleOptionView(option: $spanLongitudeDelta)
             .onChange(of: spanLongitudeDelta.value) { newValue in
-                coordinateRegion.span.longitudeDelta=newValue
+                coordinateRegion.span.longitudeDelta = newValue
             }
         BoolOptionView(option: $showsUserLocation)
     }
