@@ -14,7 +14,7 @@ struct ForEachControlView: View {
                 HeadlineView(
                     title: "ForEach",
                     url: "https://developer.apple.com/documentation/SwiftUI/ForEach",
-                    description: "A structure that computes views on demand from an underlying collection of identified data."
+                    description: String(localized: "A structure that computes views on demand from an underlying collection of identified data.")
                 )
                 ForEachRangeIntView()
                 Divider()
@@ -79,8 +79,8 @@ private struct ForEachIdentifiableView: View {
             Text("ForEach Identifiable")
                 .font(.title2)
             CodePreviewView(code: code)
-            Text("Data Not Conforming to Identifiable")
             VStack {
+                Text("Data Not Conforming to Identifiable")
                 HStack {
                     ForEach(colors, id: \.self) { color in
                         Text(color.description.capitalized)
