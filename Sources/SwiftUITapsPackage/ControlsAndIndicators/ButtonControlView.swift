@@ -7,7 +7,7 @@ struct ButtonControlView: View {
                 HeadlineView(
                     title: "Button",
                     url: "https://developer.apple.com/documentation/swiftui/button",
-                    description: "A control that initiates an action."
+                    description: String(localized: "A control that initiates an action.")
                 )
                 Group {
                     SimpleButtonView()
@@ -370,7 +370,7 @@ private struct ButtonBorderShapView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 #if !os(macOS)
-                .buttonBorderShape(.capsule)
+                    .buttonBorderShape(.capsule)
                 #endif
             }
             HStack {
@@ -384,7 +384,7 @@ private struct ButtonBorderShapView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 #if !os(macOS)
-                .buttonBorderShape(.roundedRectangle(radius: 20))
+                    .buttonBorderShape(.roundedRectangle(radius: 20))
                 #endif
             }
         }
