@@ -14,7 +14,7 @@ struct RectangularShapesControlView: View {
                 HeadlineView(
                     title: "Rectangle",
                     url: "https://developer.apple.com/documentation/swiftui/rectangle",
-                    description: "A rectangular shape aligned inside the frame of the view containing it."
+                    description: String(localized: "A rectangular shape aligned inside the frame of the view containing it.")
                 )
 
                 RectangleSampleView()
@@ -22,7 +22,7 @@ struct RectangularShapesControlView: View {
                 HeadlineView(
                     title: "RoundedRectangle",
                     url: "https://developer.apple.com/documentation/swiftui/roundedrectangle",
-                    description: "A rectangular shape with rounded corners, aligned inside the frame of the view containing it."
+                    description: String(localized: "A rectangular shape with rounded corners, aligned inside the frame of the view containing it.")
                 )
                 RoundedRectangleSampleView()
             }
@@ -31,7 +31,7 @@ struct RectangularShapesControlView: View {
     }
 }
 
-struct RoundedRectangleSampleView: View {
+private struct RoundedRectangleSampleView: View {
     var code: String {
         return """
         RoundedRectangle(cornerRadius: \(cornerRadius.valueString), style: .circular)
@@ -59,6 +59,8 @@ struct RoundedRectangleSampleView: View {
 
     var body: some View {
         VStack {
+            Text("Create a RoundedRectangle")
+                .font(.title2)
             CodePreviewView(code: code)
             RoundedRectangle(cornerRadius: cornerRadius.value, style: .circular)
                 .fill(.cyan)
@@ -69,14 +71,16 @@ struct RoundedRectangleSampleView: View {
             DoubleOptionView(option: $cornerRadius)
             RoundedRectangle(
                 cornerSize: CGSize(width: width.value, height: height.value),
-                style: .circular)
-                .fill(.gray)
-                .frame(width: 130, height: 100)
+                style: .circular
+            )
+            .fill(.gray)
+            .frame(width: 130, height: 100)
             RoundedRectangle(
                 cornerSize: CGSize(width: width.value, height: height.value),
-                style: .continuous)
-                .fill(.gray)
-                .frame(width: 130, height: 100)
+                style: .continuous
+            )
+            .fill(.gray)
+            .frame(width: 130, height: 100)
             DoubleOptionView(option: $width)
             DoubleOptionView(option: $height)
         }
@@ -90,6 +94,8 @@ private struct RectangleSampleView: View {
         .frame(width: 200,height: 100)
     """
     var body: some View {
+        Text("Create a Rectangle")
+            .font(.title2)
         CodePreviewView(code: code)
         Rectangle()
             .fill(.mint)
