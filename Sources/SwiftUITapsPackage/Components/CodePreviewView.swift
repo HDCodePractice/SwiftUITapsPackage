@@ -74,6 +74,7 @@ public struct CodePreviewView: View {
                         copyButtonHovered = hovering
                     }
                     .onTapGesture {
+                        #if !os(macOS)
                         let pasteboard = UIPasteboard.general
                         pasteboard.string = code
                         
@@ -83,6 +84,7 @@ public struct CodePreviewView: View {
                         withAnimation(.easeInOut(duration: 0.5).delay(2)) {
                             copyTextOpacity = 0
                         }
+                        #endif
                     }
             }
             HStack{
