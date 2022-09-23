@@ -1,15 +1,15 @@
 import SwiftUI
 
-private enum DateStyleType: String,CaseIterable,Identifiable{
+private enum DateStyleType: String, CaseIterable, Identifiable {
     case date = ".date"
     case offset = ".offset"
     case relative = ".relative"
     case time = ".time"
     case timer = ".timer"
-    
+
     var id: Self { self }
     var caseValue: Text.DateStyle {
-        switch self{
+        switch self {
         case .date:
             return .date
         case .offset:
@@ -24,51 +24,50 @@ private enum DateStyleType: String,CaseIterable,Identifiable{
     }
 }
 
-
 struct TextForDateView: View {
     @State var now = Date()
     let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
     let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     let oneHourAgo = Calendar.current.date(byAdding: .hour, value: -1, to: Date())!
-    
-    var codeString: String{
+
+    var codeString: String {
         var rCodeString = ""
-        for dateStyleType in DateStyleType.allCases{
+        for dateStyleType in DateStyleType.allCases {
             rCodeString += "        Text(\"\(dateStyleType.rawValue)\") + Text(now, style: \(dateStyleType.rawValue))\n"
         }
         return rCodeString
     }
-    
-    var code: String{ return """
-@State var now = Date()
-let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-let oneHourAgo = Calendar.current.date(byAdding: .hour, value: -1, to: Date())!
 
-var body: some View {
-    VStack(alignment: .leading){
-\(codeString)        Text("yesterday to tomorrow: ") + Text(yesterday...tomorrow)
-        Text("one hour to now: ") + Text(oneHourAgo...now)
-        Text("one hour to now: ") + Text(DateInterval(start: oneHourAgo, end: now))
-    }
-}
-"""
-    }
-    
+    var code: String { return """
+    @State var now = Date()
+    let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    let oneHourAgo = Calendar.current.date(byAdding: .hour, value: -1, to: Date())!
+
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+    \(codeString)        Text("yesterday to tomorrow: ") + Text(yesterday...tomorrow)
+            Text("one hour to now: ") + Text(oneHourAgo...now)
+            Text("one hour to now: ") + Text(DateInterval(start: oneHourAgo, end: now))
+        }
+    }
+    """
+    }
+
+    var body: some View {
+        VStack {
             Text("Creating form a date")
                 .font(.title2)
             CodePreviewView(code: code)
-            VStack(alignment: .leading){
-                ForEach(DateStyleType.allCases){ dateStyleType in
+            VStack(alignment: .leading) {
+                ForEach(DateStyleType.allCases) { dateStyleType in
                     Text("\(dateStyleType.rawValue): ").bold() + Text(now, style: dateStyleType.caseValue)
                 }
                 Text("yesterday to tomorrow: ").bold() + Text(yesterday...tomorrow)
                 Text("one hour to now: ").bold() + Text(oneHourAgo...now)
                 Text("one hour to now: ").bold() + Text(DateInterval(start: oneHourAgo, end: now))
             }
-            Button("Reset"){
+            Button("Reset") {
                 now = Date()
             }.buttonStyle(.borderedProminent)
         }

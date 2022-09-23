@@ -2,12 +2,12 @@ import SwiftUI
 
 struct DividerControlView: View {
     var body: some View {
-        ScrollView{
-            VStack{
+        ScrollView {
+            VStack {
                 HeadlineView(
                     title: "Divider",
                     url: "https://developer.apple.com/documentation/swiftui/divider",
-                    description: "A visual element that can be used to separate other content."
+                    description: String(localized: "A visual element that can be used to separate other content.")
                 )
                 DividerViewCode()
             }
@@ -18,39 +18,41 @@ struct DividerControlView: View {
 
 private struct DividerViewCode: View {
     var code = """
-VStack{
-    Text("Vertical divider")
-    Divider()
-        .frame(width: 100)
-    Text("Adjust SwiftUI Divider Thickness and Color")
-    Divider()
-        .frame(height:4)
-        .overlay(.blue)
-    HStack{
-        Text("Horizontal divider")
+    VStack{
+        Text("Vertical divider")
         Divider()
-            .background(.mint)
-            .frame(height: 200)
+            .frame(width: 100)
         Text("Adjust SwiftUI Divider Thickness and Color")
         Divider()
-            .frame(width: 4)
-            .overlay(.red)
-        Text("End")
-    
+            .frame(height:4)
+            .overlay(.blue)
+        HStack{
+            Text("Horizontal divider")
+            Divider()
+                .background(.mint)
+                .frame(height: 200)
+            Text("Adjust SwiftUI Divider Thickness and Color")
+            Divider()
+                .frame(width: 4)
+                .overlay(.red)
+            Text("End")
+
+        }
     }
-}
-"""
+    """
     var body: some View {
+        Text("Create Divider")
+            .font(.title2)
         CodePreviewView(code: code)
-        VStack{
+        VStack {
             Text("Vertical divider")
             Divider()
                 .frame(width: 100)
             Text("Adjust SwiftUI Divider Thickness and Color")
             Divider()
-                .frame(height:4)
+                .frame(height: 4)
                 .overlay(.blue)
-            HStack{
+            HStack {
                 Text("Horizontal divider")
                 Divider()
                     .background(.mint)
@@ -60,7 +62,6 @@ VStack{
                     .frame(width: 4)
                     .overlay(.red)
                 Text("End")
-            
             }
         }
         .border(.primary)
@@ -73,6 +74,3 @@ struct DividerControlView_Previews: PreviewProvider {
         DividerControlView()
     }
 }
-
-
-

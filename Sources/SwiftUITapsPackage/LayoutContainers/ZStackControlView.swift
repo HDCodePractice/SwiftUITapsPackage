@@ -2,12 +2,12 @@ import SwiftUI
 
 struct ZStackControlView: View {
     var body: some View {
-        ScrollView{
-            VStack{
+        ScrollView {
+            VStack {
                 HeadlineView(
-                    title: "ZStack", 
-                    url: "https://developer.apple.com/documentation/swiftui/zstack", 
-                    description: "A view that overlays its subviews, aligning them in both axes."
+                    title: "ZStack",
+                    url: "https://developer.apple.com/documentation/swiftui/zstack",
+                    description: String(localized: "A view that overlays its subviews, aligning them in both axes.")
                 )
                 ZStackShapeView()
                 Divider()
@@ -24,4 +24,3 @@ struct ZStackControlView_Previews: PreviewProvider {
         ZStackControlView()
     }
 }
-

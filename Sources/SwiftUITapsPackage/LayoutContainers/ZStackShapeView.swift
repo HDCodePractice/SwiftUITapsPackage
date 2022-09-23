@@ -1,7 +1,6 @@
 import SwiftUI
 
-private enum AlignmentType:
-    String,CaseIterable,Identifiable{
+private enum AlignmentType: String, CaseIterable, Identifiable {
     case center = ".center"
     case leading = ".leading"
     case trailing = ".trailing"
@@ -14,7 +13,7 @@ private enum AlignmentType:
     
     var id: Self { self }
     var caseValue: Alignment {
-        switch self{
+        switch self {
         case .center:
             return .center
         case .leading:
@@ -33,7 +32,6 @@ private enum AlignmentType:
             return .bottom
         case .bottomTrailing:
             return .bottomTrailing
-            
         }
     }
 }
@@ -41,24 +39,27 @@ private enum AlignmentType:
 struct ZStackShapeView: View {
     @State private var alignment: AlignmentType = .center
     
-    var code: String{ return """
-ZStack(alignment: \(alignment.rawValue)){
-    RoundedRectangle(cornerRadius: 20)
-        .fill(.mint)
-        .frame(width: 200, height: 200)
-    Circle()
-        .fill(.purple)
-        .frame(width: 50, height: 50)
-}
-"""
+    var code: String {
+        return """
+        ZStack(alignment: \(alignment.rawValue)){
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.mint)
+                .frame(width: 200, height: 200)
+            Circle()
+                .fill(.purple)
+                .frame(width: 50, height: 50)
+        }
+        """
     }
     
     var body: some View {
-        VStack(spacing: 40){
+        VStack(spacing: 40) {
+            Text("Create a ZStack")
+                .font(.title2)
             CodePreviewView(code: code)
             
-            HStack{
-                ZStack(alignment: alignment.caseValue){
+            HStack {
+                ZStack(alignment: alignment.caseValue) {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.mint)
                         .frame(width: 200, height: 200)
@@ -68,11 +69,11 @@ ZStack(alignment: \(alignment.rawValue)){
                 }
             }
             
-            HStack{
+            HStack {
                 Text("alignment:")
                     .bold()
-                Picker("alignment:", selection: $alignment.animation()){
-                    ForEach(AlignmentType.allCases){ alignmentType in
+                Picker("alignment:", selection: $alignment.animation()) {
+                    ForEach(AlignmentType.allCases) { alignmentType in
                         Text(alignmentType.rawValue)
                     }
                 }
@@ -81,7 +82,6 @@ ZStack(alignment: \(alignment.rawValue)){
         }
     }
 }
-
 
 struct ZStackShapeView_Previews: PreviewProvider {
     static var previews: some View {

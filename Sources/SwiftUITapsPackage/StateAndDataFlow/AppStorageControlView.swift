@@ -7,7 +7,7 @@ struct AppStorageControlView: View {
                 HeadlineView(
                     title: "AppStorage",
                     url: "https://developer.apple.com/documentation/swiftui/appstorage",
-                    description: "A property wrapper type that reflects a value from UserDefaults and invalidates a view on a change in value in that user default."
+                    description: String(localized: "A property wrapper type that reflects a value from UserDefaults and invalidates a view on a change in value in that user default.")
                 )
                 StoringSimpleValueView()
                 Divider()
