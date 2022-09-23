@@ -68,6 +68,7 @@ VStack (alignment:. leading, spacing:20){
                     . truncationMode (.middle)
                 Text (longText)
                     .minimumScaleFactor(0.3)
+                #if !os(macOS)
                 if #available(iOS 16.0, *) {
                     ViewThatFits{
                         Text (longText)
@@ -77,6 +78,7 @@ VStack (alignment:. leading, spacing:20){
                             .minimumScaleFactor(0.3)
                     }
                 }
+                #endif
             }
             .lineLimit(1)
             .frame (width: width)

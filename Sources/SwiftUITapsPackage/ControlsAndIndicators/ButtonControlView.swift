@@ -369,7 +369,9 @@ private struct ButtonBorderShapView: View {
                     tapMessage = "capsule"
                 }
                 .buttonStyle(.borderedProminent)
+                #if !os(macOS)
                 .buttonBorderShape(.capsule)
+                #endif
             }
             HStack {
                 Button("roundedRectangle") {
@@ -381,7 +383,9 @@ private struct ButtonBorderShapView: View {
                     tapMessage = "roundedRectangle(radius)"
                 }
                 .buttonStyle(.borderedProminent)
+                #if !os(macOS)
                 .buttonBorderShape(.roundedRectangle(radius: 20))
+                #endif
             }
         }
     }

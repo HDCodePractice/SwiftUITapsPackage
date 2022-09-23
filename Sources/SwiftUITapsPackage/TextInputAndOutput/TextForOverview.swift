@@ -107,6 +107,7 @@ private struct TextForFontList: View {
             VStack{
                 ScrollView{
                     VStack{
+                        #if !os(macOS)
                         ForEach(UIFont.familyNames,id:\.self){ name in
                             HStack{
                                 Text(name)
@@ -114,6 +115,7 @@ private struct TextForFontList: View {
                                     .font(.custom(name, size: 20))
                             }
                         }
+                        #endif
                     }
                 }
             }

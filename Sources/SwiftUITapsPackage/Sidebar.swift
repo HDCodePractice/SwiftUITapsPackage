@@ -79,7 +79,10 @@ public struct Sidebar: View {
                 }
             }
             
-        }.listStyle(.insetGrouped)
+        }
+        #if !os(macOS)
+        .listStyle(.insetGrouped)
+        #endif
     }
 }
 
