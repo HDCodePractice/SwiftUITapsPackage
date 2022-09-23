@@ -40,6 +40,10 @@ struct DynamicScaleText: View {
                 . truncationMode (.middle)
             Text (longText)
                 .minimumScaleFactor(0.3)
+            Text("This is a allowsTightening test.")
+                .allowsTightening(false)
+            Text("This is a allowsTightening test.")
+                .allowsTightening(true)
             if #available(iOS 16.0, *) {
                 ViewThatFits{
                     Text (longText)
@@ -69,6 +73,10 @@ struct DynamicScaleText: View {
                     .truncationMode(.middle)
                 Text(longText)
                     .minimumScaleFactor(0.3)
+                Text("This is a allowsTightening test.")
+                    .allowsTightening(false)
+                Text("This is a allowsTightening test.")
+                    .allowsTightening(true)
                 #if !os(macOS)
                 if #available(iOS 16.0, *) {
                     ViewThatFits {
