@@ -7,7 +7,7 @@ struct ImageControlView: View {
                 HeadlineView(
                     title: "Image",
                     url: "https://developer.apple.com/documentation/swiftui/image",
-                    description: "A view that displays an image."
+                    description: String(localized: "A view that displays an image.")
                 )
                 CreateImageView()
                 Divider()
