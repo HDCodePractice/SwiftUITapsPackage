@@ -2,12 +2,12 @@ import SwiftUI
 
 struct MenuControlView: View {
     var body: some View {
-        ScrollView{
-            VStack{
+        ScrollView {
+            VStack {
                 HeadlineView(
-                    title: "Menu", 
-                    url: "https://developer.apple.com/documentation/swiftui/menu", 
-                    description: "A control for presenting a menu of actions."
+                    title: "Menu",
+                    url: "https://developer.apple.com/documentation/swiftui/menu",
+                    description: String(localized: "A control for presenting a menu of actions.")
                 )
                 MenuView()
                 Divider()
@@ -25,46 +25,44 @@ struct MenuControlView_Previews: PreviewProvider {
     }
 }
 
-
-
 private struct MenuView: View {
     @State var selected = "no selected"
-    
-    var code : String{
+
+    var code: String {
         return """
-@State var selected = "no selected"
-var body: some View {
-    Text("Selected: \\(selected)")
-    Menu("Actions Menu") {
-        Text("Text")
-        Image(systemName: "star")
-        Button("Button"){ selected = "Button"}
-        Divider()
-        Menu("SubMenu") { 
-            Label("Label", systemImage: "house")
-            Button("Sub Menu Button"){ selected = "Sub Menu Button"}
+        @State var selected = "no selected"
+        var body: some View {
+            Text("Selected: \\(selected)")
+            Menu("Actions Menu") {
+                Text("Text")
+                Image(systemName: "star")
+                Button("Button"){ selected = "Button"}
+                Divider()
+                Menu("SubMenu") {
+                    Label("Label", systemImage: "house")
+                    Button("Sub Menu Button"){ selected = "Sub Menu Button"}
+                }
+                Link("Link",destination: URL(string: "https://www.apple.com")!)
+            }
         }
-        Link("Link",destination: URL(string: "https://www.apple.com")!)
+        """
     }
-}
-"""
-    }
-    
+
     var body: some View {
-        VStack{
+        VStack {
             Text("Create a Menu")
             CodePreviewView(code: code)
             Text("Selected: \(selected)")
             Menu("Actions Menu") {
                 Text("Text")
                 Image(systemName: "star")
-                Button("Button"){ selected = "Button"}
+                Button("Button") { selected = "Button" }
                 Divider()
-                Menu("SubMenu") { 
+                Menu("SubMenu") {
                     Label("Label", systemImage: "house")
-                    Button("Sub Menu Button"){ selected = "Sub Menu Button"}
+                    Button("Sub Menu Button") { selected = "Sub Menu Button" }
                 }
-                Link("Link",destination: URL(string: "https://www.apple.com")!)
+                Link("Link", destination: URL(string: "https://www.apple.com")!)
             }
         }
     }
@@ -72,50 +70,50 @@ var body: some View {
 
 struct MenuPrimaryActionView: View {
     var code = """
-@State var selected = "no selected"
-var body: some View {
-    VStack{
-        Text("Selected: \\(selected)")
-        Menu{
-            Button { 
-                selected = "selected 1"
-            } label: { 
-                Label("Select 1", systemImage: "1.circle")
-            }
-            Button { 
-                selected = "selected 2"
-            } label: { 
-                Label("Select 2", systemImage: "2.circle")
-            }
-        }label: {
-            Label("Select Menu", systemImage: "menubar.rectangle")
-        }primaryAction: {
-            selected = "select primary"
-        }
-    }
-}
-"""
     @State var selected = "no selected"
     var body: some View {
         VStack{
-            Text("Create a Menu with primary action")
-                .font(.title2)
-            CodePreviewView(code: code)
-            Text("Selected: \(selected)")
+            Text("Selected: \\(selected)")
             Menu{
-                Button { 
+                Button {
                     selected = "selected 1"
-                } label: { 
+                } label: {
                     Label("Select 1", systemImage: "1.circle")
                 }
-                Button { 
+                Button {
                     selected = "selected 2"
-                } label: { 
+                } label: {
                     Label("Select 2", systemImage: "2.circle")
                 }
             }label: {
                 Label("Select Menu", systemImage: "menubar.rectangle")
             }primaryAction: {
+                selected = "select primary"
+            }
+        }
+    }
+    """
+    @State var selected = "no selected"
+    var body: some View {
+        VStack {
+            Text("Create a Menu with primary action")
+                .font(.title2)
+            CodePreviewView(code: code)
+            Text("Selected: \(selected)")
+            Menu {
+                Button {
+                    selected = "selected 1"
+                } label: {
+                    Label("Select 1", systemImage: "1.circle")
+                }
+                Button {
+                    selected = "selected 2"
+                } label: {
+                    Label("Select 2", systemImage: "2.circle")
+                }
+            } label: {
+                Label("Select Menu", systemImage: "menubar.rectangle")
+            } primaryAction: {
                 selected = "select primary"
             }
         }
