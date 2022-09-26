@@ -41,8 +41,8 @@ public struct Sidebar: View {
                 NavigationLink("Circular shapes"){
                     CircularShapesControlView()
                 }
-                NavigationLink("Circular Shapes"){
-                    CircularShapesControlView()
+                NavigationLink("Path"){
+                    PathControlView()
                 }
             }
             
