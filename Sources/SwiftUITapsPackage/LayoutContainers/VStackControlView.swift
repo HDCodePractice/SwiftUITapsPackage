@@ -43,7 +43,7 @@ private enum AlignmentType: String, CaseIterable, Identifiable {
 
 private struct VStackView: View {
     @State private var alignment: AlignmentType = .center
-    @State var spacing = DoubleOption(name: "spacing", value: 8, defaultValue: 8, range: -10 ... 50)
+    @State var spacing = DoubleOption(name: "spacing", value: 8, defaultValue: 8, range: -10 ... 50, isOption: true)
 
     var spacingString: String {
         return spacing.active ? ", spacing:\(spacing.valueString)" : ""
