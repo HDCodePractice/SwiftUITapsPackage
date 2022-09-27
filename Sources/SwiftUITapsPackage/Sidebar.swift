@@ -1,90 +1,98 @@
 import SwiftUI
 
 public struct Sidebar: View {
-    public init(){}
+    public init() {}
     public var body: some View {
-        List{
-            Section("State and data flow"){
-                NavigationLink("AppStorage"){
-                    AppStorageControlView()
+        List {
+            Group {
+                Section("State and data flow") {
+                    NavigationLink("AppStorage") {
+                        AppStorageControlView()
+                    }
+                }
+                
+                Section("Text input and output") {
+                    NavigationLink("Label") {
+                        LabelControlView()
+                    }
+                    NavigationLink("Text") {
+                        TextControlView()
+                    }
+                }
+                
+                Section("Images") {
+                    NavigationLink("Image") {
+                        ImageControlView()
+                    }
+                }
+                
+                Section("Controls and indicators") {
+                    NavigationLink("Button") {
+                        ButtonControlView()
+                    }
+                    NavigationLink("Menu") {
+                        MenuControlView()
+                    }
+                }
+                
+                Section("Shapes") {
+                    NavigationLink("Rectangular shapes") {
+                        RectangularShapesControlView()
+                    }
+                    NavigationLink("Circular shapes") {
+                        CircularShapesControlView()
+                    }
+                    NavigationLink("Path") {
+                        PathControlView()
+                    }
+                }
+                
+                Section("Layout containers") {
+                    NavigationLink("VStack") {
+                        VStackControlView()
+                    }
+                    NavigationLink("ZStack") {
+                        ZStackControlView()
+                    }
+                    NavigationLink("Divider") {
+                        DividerControlView()
+                    }
+                }
+                
+                Section("Collection containers") {
+                    NavigationLink("ForEach") {
+                        ForEachControlView()
+                    }
                 }
             }
-            
-            Section("Text input and output"){
-                NavigationLink("Label"){
-                    LabelControlView()
+            Group {
+                Section("Animations") {
+                    NavigationLink("withAnimation") {
+                        WithAnimationControlView()
+                    }
+                    NavigationLink("Animatable") {
+                        AnimatableControlView()
+                    }
                 }
-                NavigationLink("Text"){
-                    TextControlView()
+                
+                Section("Input and event modifiers") {
+                    NavigationLink("Keyboard shortcuts") {
+                        KeyboardShortcutsControlView()
+                    }
                 }
-            }
-            
-            Section("Images"){
-                NavigationLink("Image"){
-                    ImageControlView()
+                
+                Section("MapKit") {
+                    NavigationLink("Map") {
+                        MapControlView()
+                    }
                 }
-            }
-            
-            Section("Controls and indicators"){
-                NavigationLink("Button"){
-                    ButtonControlView()
-                }
-                NavigationLink("Menu"){
-                    MenuControlView()
-                }
-            }
-            
-            Section("Shapes"){
-                NavigationLink("Rectangular shapes"){
-                    RectangularShapesControlView()
-                }
-                NavigationLink("Circular shapes"){
-                    CircularShapesControlView()
-                }
-                NavigationLink("Path"){
-                    PathControlView()
+                
+                Section("AVKit") {
+                    NavigationLink("VideoPlayer"){
+                        VideoPlayerControlView()
+                    }
                 }
             }
-            
-            Section("Layout containers"){
-                NavigationLink("VStack"){
-                    VStackControlView()
-                }
-                NavigationLink("ZStack"){
-                    ZStackControlView()
-                }
-                NavigationLink("Divider"){
-                    DividerControlView()
-                }
-            }
-            
-            Section("Collection containers"){
-                NavigationLink("ForEach"){
-                    ForEachControlView()
-                }
-            }
-            
-            Section("Animations"){
-                NavigationLink("withAnimation"){
-                    WithAnimationControlView()
-                }
-                NavigationLink("Animatable"){
-                    AnimatableControlView()
-                }
-            }
-            
-            Section("Input and event modifiers"){
-                NavigationLink("Keyboard shortcuts"){
-                    KeyboardShortcutsControlView()
-                }
-            }
-            
-            Section("Map"){
-                NavigationLink("Map"){
-                    MapControlView()
-                }
-            }
-            
         }
         #if !os(macOS)
         .listStyle(.insetGrouped)
