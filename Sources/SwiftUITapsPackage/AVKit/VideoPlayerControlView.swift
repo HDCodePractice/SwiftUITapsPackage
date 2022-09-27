@@ -33,13 +33,39 @@ struct CreateVideoPlayerView: View {
         struct CreateVideoPlayerView: View {
             let player = AVPlayer(url: Bundle.module.url(forResource: "sample-video", withExtension: "mov")!)
             let endMonitor = NotificationCenter.default.publisher(for: NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+            @State var isFullScreen = false
             var body: some View {
-                VideoPlayer(player: player)
-                    .frame(width: \(width.valueString),height: \(height.valueString)
-                    .onReceive(endMonitor) { _ in
-                        player.seek(to: .zero)
-                        player.play()
+                VStack{
+                    VideoPlayer(player: player)
+                        .frame(width: \(width.valueString),height: \(height.valueString)
+                        .onReceive(endMonitor) { _ in
+                            player.seek(to: .zero)
+                            player.play()
+                        }
+                    Button {
+                        isFullScreen = true
+                    } label: {
+                        Image(systemName: "arrow.up.backward.and.arrow.down.forward")
                     }
+                    .fullScreenCover(isPresented: $isFullScreen) {
+                        VideoPlayer(player: player) {
+                            if #available(iOS 16, *) {
+                                ZStack(alignment: .topLeading) {
+                                    Color.clear
+                                    Image(systemName: "arrow.down.forward.and.arrow.up.backward")
+                                        .font(.largeTitle)
+                                        .opacity(0.8)
+                                        .foregroundColor(.secondary)
+                                        .onTapGesture {
+                                            isFullScreen = false
+                                        }
+                                        .padding()
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                }
+                            }
+                        }.ignoresSafeArea()
+                    }
+                }
             }
         }
         """
@@ -47,6 +73,8 @@ struct CreateVideoPlayerView: View {
 
     let player = AVPlayer(url: Bundle.module.url(forResource: "sample-video", withExtension: "mov")!)
     let endMonitor = NotificationCenter.default.publisher(for: NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+
+    @State var isFullScreen = false
 
     @State var width = IntOption(name: "width", value: 300, range: 200...350)
     @State var height = IntOption(name: "height", value: 200, range: 100...300)
@@ -56,21 +84,48 @@ struct CreateVideoPlayerView: View {
             Text("Create a VideoPlayer")
                 .font(.title2)
             CodePreviewView(code: code)
-            ZStack {
-                VideoPlayer(player: player)
-                    .frame(width: CGFloat(width.value), height: CGFloat(height.value))
-                    .onReceive(endMonitor) { _ in
-                        player.seek(to: .zero)
-                        player.play()
-                    }
+            VStack{
+                ZStack {
+                    VideoPlayer(player: player)
+                        .frame(width: CGFloat(width.value), height: CGFloat(height.value))
+                        .onReceive(endMonitor) { _ in
+                            player.seek(to: .zero)
+                            player.play()
+                        }
+                }
+                .frame(width: 350, height: 300)
+                Button {
+                    isFullScreen = true
+                } label: {
+                    Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+                }
+                .padding()
+                .fullScreenCover(isPresented: $isFullScreen) {
+                    VideoPlayer(player: player) {
+                        if #available(iOS 16, *) {
+                            ZStack(alignment: .topLeading) {
+                                Color.clear
+                                Image(systemName: "arrow.down.forward.and.arrow.up.backward")
+                                    .font(.largeTitle)
+                                    .opacity(0.8)
+                                    .foregroundColor(.secondary)
+                                    .onTapGesture {
+                                        isFullScreen = false
+                                    }
+                                    .padding()
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                            }
+                        }
+                    }.ignoresSafeArea()
+                }
             }
-            .frame(width: 350, height: 300)
             .border(.primary)
-            HStack{
+            HStack {
                 Spacer()
                 Text("Video:[NickyPe](https://pixabay.com/zh/videos/wood-anemones-wildflower-flower-112429/) Audio:[prazkhanal](https://pixabay.com/zh/music/-goldn-116392/)")
                     .font(.caption).foregroundColor(.secondary)
             }
+            
             IntOptionView(option: $width)
             IntOptionView(option: $height)
         }
