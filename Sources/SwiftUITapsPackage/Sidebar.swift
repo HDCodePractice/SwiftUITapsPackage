@@ -91,6 +91,9 @@ public struct Sidebar: View {
                     NavigationLink("VideoPlayer"){
                         VideoPlayerControlView()
                     }
+                    NavigationLink("AVAudioPlayer"){
+                        AVAudioPlayerControlView()
+                    }
                 }
             }
         }
