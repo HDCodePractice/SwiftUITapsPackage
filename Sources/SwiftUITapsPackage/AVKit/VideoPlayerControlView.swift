@@ -6,7 +6,6 @@
 //
 
 import AVKit
-import Foundation
 import SwiftUI
 
 struct VideoPlayerControlView: View {
@@ -25,7 +24,7 @@ struct VideoPlayerControlView: View {
     }
 }
 
-struct CreateVideoPlayerView: View {
+private struct CreateVideoPlayerView: View {
     var code: String {
         """
         import AVKit
