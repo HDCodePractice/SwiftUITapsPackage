@@ -83,7 +83,7 @@ private struct CreateVideoPlayerView: View {
             Text("Create a VideoPlayer")
                 .font(.title2)
             CodePreviewView(code: code)
-            VStack{
+            VStack {
                 ZStack {
                     VideoPlayer(player: player)
                         .frame(width: CGFloat(width.value), height: CGFloat(height.value))
@@ -124,7 +124,7 @@ private struct CreateVideoPlayerView: View {
                 Text("Video:[NickyPe](https://pixabay.com/zh/videos/wood-anemones-wildflower-flower-112429/) Audio:[prazkhanal](https://pixabay.com/zh/music/-goldn-116392/)")
                     .font(.caption).foregroundColor(.secondary)
             }
-            
+
             IntOptionView(option: $width)
             IntOptionView(option: $height)
         }

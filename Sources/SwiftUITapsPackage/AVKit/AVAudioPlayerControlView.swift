@@ -24,7 +24,7 @@ struct AVAudioPlayerControlView: View {
     }
 }
 
-struct AVAudioPlayerSampleView: View {
+private struct AVAudioPlayerSampleView: View {
     var code = """
     struct AVAudioPlayerSampleView: View {
         @State var player: AVAudioPlayer? = nil
