@@ -47,6 +47,12 @@ public struct Sidebar: View {
                     }
                 }
                 
+                Section("Drawing and graphics"){
+                    NavigationLink("Canvas"){
+                        CanvasControlView()
+                    }
+                }
+                
                 Section("Layout containers") {
                     NavigationLink("VStack") {
                         VStackControlView()
