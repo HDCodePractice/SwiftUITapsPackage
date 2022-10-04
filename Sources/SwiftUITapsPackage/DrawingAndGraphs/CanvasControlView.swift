@@ -25,7 +25,7 @@ struct CanvasControlView: View {
     }
 }
 
-struct CreateCanvasHaveSymbols: View {
+private struct CreateCanvasHaveSymbols: View {
     var code = """
         struct CreateCanvasHaveSymbols: View {
             @State var isChangeImage = false
