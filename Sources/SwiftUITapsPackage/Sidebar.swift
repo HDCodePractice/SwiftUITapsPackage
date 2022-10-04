@@ -87,6 +87,12 @@ public struct Sidebar: View {
                     }
                 }
                 
+                Section("UIKit integration"){
+                    NavigationLink("UIViewRepresentable"){
+                        UIViewRepresentableControlView()
+                    }
+                }
+                
                 Section("MapKit") {
                     NavigationLink("Map") {
                         MapControlView()
