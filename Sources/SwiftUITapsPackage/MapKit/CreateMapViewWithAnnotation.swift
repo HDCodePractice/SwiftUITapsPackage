@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  CreateMapViewWithAnnotation.swift
 //  
 //
 //  Created by 老房东 on 2022-10-04.
@@ -110,26 +110,28 @@ struct CreateMapViewWithAnnotation: View {
     ]
 
     var body: some View {
-        Text("Create a MapView using corrdinator")
-            .font(.title2)
-        CodePreviewView(code: code)
-        MapView(region: $region, annotations: annotations)
-            .frame(width: 300, height: 200)
-        Text("latitude:\(region.center.latitude, specifier: "%.2f") longitude\(region.center.longitude, specifier: "%.2f")")
-        HStack {
-            Button("Add Annotations") {
-                let number = annotations.count
-                annotations.append(
-                    MyAnnotation(
-                        title: "Apple\(number)",
-                        subtitle: "I want to go\(number)",
-                        coordinate: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965 - Double(number) * 0.3)
+        VStack{
+            Text("Create a MapView using corrdinator")
+                .font(.title2)
+            CodePreviewView(code: code)
+            MapView(region: $region, annotations: annotations)
+                .frame(width: .infinity, height: 300)
+            Text("latitude:\(region.center.latitude, specifier: "%.2f") longitude\(region.center.longitude, specifier: "%.2f")")
+            HStack {
+                Button("Add Annotations") {
+                    let number = annotations.count
+                    annotations.append(
+                        MyAnnotation(
+                            title: "Apple\(number)",
+                            subtitle: "I want to go\(number)",
+                            coordinate: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965 - Double(number) * 0.3)
+                        )
                     )
-                )
-            }
-            Button("Remove Annotations") {
-                if annotations.isEmpty == false {
-                    annotations.removeLast()
+                }
+                Button("Remove Annotations") {
+                    if annotations.isEmpty == false {
+                        annotations.removeLast()
+                    }
                 }
             }
         }

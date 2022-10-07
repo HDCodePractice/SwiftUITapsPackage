@@ -97,6 +97,12 @@ public struct Sidebar: View {
                     NavigationLink("Map") {
                         MapControlView()
                     }
+                    NavigationLink("MKMapView"){
+                        MKMapViewControlView()
+                    }
+                    NavigationLink("MapKit overlays"){
+                        MapKitOverlaysControlView()
+                    }
                 }
                 
                 Section("AVKit") {

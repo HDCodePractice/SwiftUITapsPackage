@@ -74,7 +74,7 @@ private struct CreateMapView: View {
                 .font(.title2)
             CodePreviewView(code: code)
             MapView(region: region)
-                .frame(width: 300, height: 200)
+                .frame(width: .infinity, height: 300)
         }
     }
 }
