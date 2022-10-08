@@ -33,6 +33,9 @@ public struct Sidebar: View {
                     NavigationLink("Menu") {
                         MenuControlView()
                     }
+                    NavigationLink("Slider"){
+                        SliderControlView()
+                    }
                 }
                 
                 Section("Shapes") {
