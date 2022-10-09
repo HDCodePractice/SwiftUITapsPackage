@@ -79,6 +79,9 @@ public struct Sidebar: View {
                     NavigationLink("withAnimation") {
                         WithAnimationControlView()
                     }
+                    NavigationLink(""){
+                        AnimationControlView()
+                    }
                     NavigationLink("Animatable") {
                         AnimatableControlView()
                     }
