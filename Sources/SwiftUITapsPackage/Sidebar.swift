@@ -79,7 +79,7 @@ public struct Sidebar: View {
                     NavigationLink("withAnimation") {
                         WithAnimationControlView()
                     }
-                    NavigationLink(""){
+                    NavigationLink("animation"){
                         AnimationControlView()
                     }
                     NavigationLink("Animatable") {
