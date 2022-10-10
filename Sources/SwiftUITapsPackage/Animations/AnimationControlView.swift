@@ -18,8 +18,73 @@ struct AnimationControlView: View {
                 )
                 SimpleAnimationSampleView()
                 Divider()
+                MutiAnimationSampleView()
             }
             .padding()
+        }
+    }
+}
+
+struct MutiAnimationSampleView: View {
+    var code = """
+    struct MutiAnimationSampleView: View {
+        @State var animateHeight = false
+        @State var animateWidth = false
+
+        var body: some View {
+            VStack {
+                ZStack {
+                    Color.red
+                    Rectangle()
+                        .fill(.white)
+                        .scaleEffect(animateHeight ? 1.4 : 1)
+                        .frame(
+                            width: animateWidth ? 300 : 60,
+                            height: animateHeight ? 200 : 20
+                        )
+                        .shadow(color: .white, radius: 20)
+                        .shadow(color: .white, radius: 20)
+                        .animation(
+                            .linear(duration: 0.2),
+                            value: animateWidth
+                        )
+                }
+                .frame(height: 200)
+                Button("Start Animation") {
+                    animateWidth.toggle()
+                    withAnimation(.linear(duration: 0.5).delay(0.5)) {
+                        animateHeight.toggle()
+                    }
+                }
+            }
+        }
+    }
+    """
+    @State var animateHeight = false
+    @State var animateWidth = false
+
+    var body: some View {
+        VStack {
+            Text("Mix animation and withAnimation")
+                .font(.title2)
+            CodePreviewView(code: code)
+            ZStack {
+                Color.red
+                Rectangle()
+                    .fill(.white)
+                    .scaleEffect(animateHeight ? 1.4 : 1)
+                    .frame(width: animateWidth ? 300 : 60, height: animateHeight ? 200 : 20)
+                    .shadow(color: .white, radius: 20)
+                    .shadow(color: .white, radius: 20)
+                    .animation(.linear(duration: 0.2), value: animateWidth)
+            }
+            .frame(height: 200)
+            Button("Start Animation") {
+                animateWidth.toggle()
+                withAnimation(.linear(duration: 0.5).delay(0.5)) {
+                    animateHeight.toggle()
+                }
+            }
         }
     }
 }
