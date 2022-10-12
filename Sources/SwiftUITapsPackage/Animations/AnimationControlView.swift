@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  AnimationControlView.swift
 //
 //
 //  Created by 老房东 on 2022-10-09.
@@ -52,7 +52,9 @@ struct MutiAnimationSampleView: View {
                 .frame(height: 200)
                 Button("Start Animation") {
                     animateWidth.toggle()
-                    withAnimation(.linear(duration: 0.5).delay(0.5)) {
+                    withAnimation(
+                        .linear(duration: 0.5).delay(0.5)
+                    ) {
                         animateHeight.toggle()
                     }
                 }

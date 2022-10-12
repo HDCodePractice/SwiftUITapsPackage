@@ -33,7 +33,7 @@ public struct Sidebar: View {
                     NavigationLink("Menu") {
                         MenuControlView()
                     }
-                    NavigationLink("Slider"){
+                    NavigationLink("Slider") {
                         SliderControlView()
                     }
                 }
@@ -50,8 +50,8 @@ public struct Sidebar: View {
                     }
                 }
                 
-                Section("Drawing and graphics"){
-                    NavigationLink("Canvas"){
+                Section("Drawing and graphics") {
+                    NavigationLink("Canvas") {
                         CanvasControlView()
                     }
                 }
@@ -79,7 +79,7 @@ public struct Sidebar: View {
                     NavigationLink("withAnimation") {
                         WithAnimationControlView()
                     }
-                    NavigationLink("animation"){
+                    NavigationLink("animation") {
                         AnimationControlView()
                     }
                     NavigationLink("Animatable") {
@@ -93,8 +93,14 @@ public struct Sidebar: View {
                     }
                 }
                 
-                Section("UIKit integration"){
-                    NavigationLink("UIViewRepresentable"){
+                Section("Gestures") {
+                    NavigationLink("DragGesture") {
+                        DragGestureControlView()
+                    }
+                }
+                
+                Section("UIKit integration") {
+                    NavigationLink("UIViewRepresentable") {
                         UIViewRepresentableControlView()
                     }
                 }
@@ -103,22 +109,22 @@ public struct Sidebar: View {
                     NavigationLink("Map") {
                         MapControlView()
                     }
-                    NavigationLink("MKMapView"){
+                    NavigationLink("MKMapView") {
                         MKMapViewControlView()
                     }
-                    NavigationLink("MapKit overlays"){
+                    NavigationLink("MapKit overlays") {
                         MapKitOverlaysControlView()
                     }
                 }
                 
                 Section("AVKit") {
-                    NavigationLink("VideoPlayer"){
+                    NavigationLink("VideoPlayer") {
                         VideoPlayerControlView()
                     }
-                    NavigationLink("AVAudioPlayer"){
+                    NavigationLink("AVAudioPlayer") {
                         AVAudioPlayerControlView()
                     }
-                    NavigationLink("AVPlayer"){
+                    NavigationLink("AVPlayer") {
                         AVPlayerControlView()
                     }
                 }
