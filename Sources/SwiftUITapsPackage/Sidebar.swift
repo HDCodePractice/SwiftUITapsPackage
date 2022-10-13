@@ -87,18 +87,24 @@ public struct Sidebar: View {
                     }
                 }
                 
-                Section("Input and event modifiers") {
-                    NavigationLink("Keyboard shortcuts") {
-                        KeyboardShortcutsControlView()
-                    }
-                }
-                
                 Section("Gestures") {
                     NavigationLink("DragGesture") {
                         DragGestureControlView()
                     }
                 }
                 
+                Section("User input") {
+                    NavigationLink("Keyboard shortcuts") {
+                        KeyboardShortcutsControlView()
+                    }
+                }
+                
+                Section("Pasteboard") {
+                    NavigationLink("UIPasteboard") {
+                        PasteboardControlView()
+                    }
+                }
+
                 Section("UIKit integration") {
                     NavigationLink("UIViewRepresentable") {
                         UIViewRepresentableControlView()
