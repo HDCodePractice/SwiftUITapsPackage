@@ -39,7 +39,7 @@ private struct CreateCanvasHaveSymbols: View {
                             }
                         } symbols: {
                             Image(systemName: isChangeImage ? "sun.max.circle.fill" : "moon.circle.fill").font(.system(size: 100)).tag(1)
-                            Image(systemName: isChangeImage ? "sunrise.circle.fill" : "sunset.circle.fill").font(.system(size: 100)).tag(2)
+                            Image(systemName: isChangeImage ? "sunrise.fill" : "sunset.fill").font(.system(size: 100)).tag(2)
                         }
                     }
                     .frame(width: 200, height: 150)
@@ -73,7 +73,7 @@ private struct CreateCanvasHaveSymbols: View {
                     }
                 } symbols: {
                     Image(systemName: isChangeImage ? "sun.max.circle.fill" : "moon.circle.fill").font(.system(size: 100)).tag(1)
-                    Image(systemName: isChangeImage ? "sunrise.circle.fill" : "sunset.circle.fill").font(.system(size: 100)).tag(2)
+                    Image(systemName: isChangeImage ? "sunrise.fill" : "sunset.fill").font(.system(size: 100)).tag(2)
                 }
             }
             .frame(width: 200, height: 150)
