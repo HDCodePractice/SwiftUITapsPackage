@@ -16,6 +16,7 @@ struct ListControlView: View {
                     url: "https://developer.apple.com/documentation/swiftui/list",
                     description: String(localized: "A container that presents rows of data arranged in a single column, optionally providing the ability to select one or more members.")
                 )
+                CreateListFromIdentifiableData()
                 CreateRowsView()
                 Divider()
                 CreateSingleSelectionRowsView()
@@ -27,17 +28,52 @@ struct ListControlView: View {
     }
 }
 
+struct CreateListFromIdentifiableData: View {
+    struct Ocean: Identifiable {
+        let id = UUID()
+        let name: String
+    }
+
+    var oceans = [
+        Ocean(name: "Pacific"),
+        Ocean(name: "Atlantic"),
+        Ocean(name: "Indian"),
+        Ocean(name: "Southern"),
+        Ocean(name: "Arctic")
+    ]
+
+    @State var selection: String?
+
+    var body: some View {
+        VStack {
+            NavigationView {
+                VStack {
+                    Text("Selected: \(selection ?? "")")
+                    List(oceans, selection: $selection) {
+                        Text($0.name)
+                    }
+                    .toolbar {
+                        EditButton()
+                    }
+                }
+            }
+            .frame(height: 200)
+            .border(.primary)
+        }
+    }
+}
+
 private struct CreateMultipleSelectionRowView: View {
     @State var selection: Set<Int> = []
-    
+
     var body: some View {
-        VStack{
+        VStack {
             Text("Create a multiple selection rows view")
                 .font(.title2)
             NavigationView {
-                VStack{
+                VStack {
                     EditButton()
-                    Text("Selected: \( selection.reduce("", { x, y in "\(x) \(y)" }) )")
+                    Text("Selected: \(selection.reduce("") { x, y in "\(x) \(y)" })")
                     List(selection: $selection) {
                         Text("Row 1").tag(1)
                         Text("Row 2").tag(2)
@@ -69,14 +105,14 @@ private struct CreateSingleSelectionRowsView: View {
     }
     """
     @State var selection: String? = nil
-    
+
     var body: some View {
         VStack {
             Text("Create a selection rows view")
                 .font(.title2)
             CodePreviewView(code: code)
             NavigationView {
-                VStack{
+                VStack {
                     EditButton()
                     Text("Selected: \(selection ?? "")")
                     List(selection: $selection) {
