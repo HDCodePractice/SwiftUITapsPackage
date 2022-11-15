@@ -24,6 +24,9 @@ public struct Sidebar: View {
                     NavigationLink("Image") {
                         ImageControlView()
                     }
+                    NavigationLink("ImageRenderer"){
+                        ImageRendererControlView()
+                    }
                 }
                 
                 Section("Controls and indicators") {
