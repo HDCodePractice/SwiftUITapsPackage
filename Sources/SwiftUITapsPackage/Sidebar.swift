@@ -11,6 +11,12 @@ public struct Sidebar: View {
                     }
                 }
                 
+                Section("Search"){
+                    NavigationLink("searchable"){
+                        SearchableControlView()
+                    }
+                }
+                
                 Section("Text input and output") {
                     NavigationLink("Label") {
                         LabelControlView()
